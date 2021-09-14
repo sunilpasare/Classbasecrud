@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+<title>Allrecords</title>
+{% endblock %}
+
+{% block content %}
+<h2>Laptop Models Available</h2>
+<br>
+    <table class="table table-success">
+        <tr>
+            <th>Modelname</th>
+            <th>Company</th>
+            <th>Ram</th>
+            <th>Rom</th>
+            <th>Weight</th>
+            <th>Processor</th>
+        </tr>
+        {% for lap in object_list %}
+        <tr>
+            <td>{{lap.Modelname}}</td>
+            <td>{{lap.Company}}</td>
+            <td>{{lap.Ram}}</td>
+            <td>{{lap.Rom}}</td>
+            <td>{{lap.Weight}}</td>
+            <td>{{lap.Processor}}</td>
+            <td><a href="{% url 'update' lap.id %}"><button>Update</button></a></td>
+            
+            <td><a href="{% url 'delete' lap.id %}"><button>Delete</button></a></td>
+        </tr>
+        
+        {% endfor %}
+
+    </table>
+    
+    <br><br><br>
+    {% endblock content %}
